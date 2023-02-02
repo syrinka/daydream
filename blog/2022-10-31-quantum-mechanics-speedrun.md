@@ -19,8 +19,13 @@ Migrated from old blog
 
 ### 德布罗意假说
 
-$$ E = \hbar \omega $$
-$$ p = \hbar k $$
+$$
+E = \hbar \omega
+$$
+
+$$
+p = \hbar k
+$$
 
 ### 波函数
 
