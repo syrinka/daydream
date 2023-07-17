@@ -20,9 +20,9 @@ title: Trailing Slash
 
 但一到生产环境上就出怪事了。
 
-一会儿是 `Method Not Allowed`，一会儿是 POST body 丢失。开发环境的时候什么事都没有，仿佛是什么灵异事件。
+一会儿是 `Method Not Allowed`，一会儿是 POST body 丢失。换回开发环境还是什么事都没有，仿佛是什么灵异事件。
 
-## 前置知识，Trailing Slash
+## 前置知识、Trailing Slash
 
 不是很确定 trailing slash 该怎么翻译，字面意思大概是“后继斜杠”之类的？比如 `/path/to/url/` 右边的最后一个 `/`。果然还是先不翻译了。
 
@@ -69,9 +69,9 @@ location /path/to/that/ {
 
 试验了一下，curl 和 requests 都是这么实现的，真是令人高兴。
 
-> 在 curl 中，有 `--post301` 可以关闭这个行为，当然了，不是默认开启的。
+奇怪的特性，据说是为了向后兼容，谁知道呢。
 
-莫问，问就是向后兼容，再问就是特性的一部分。
+> 在 curl 中，有 `--post301` 可以关闭这个行为，当然了，不是默认开启的。
 
 此为其二。
 
@@ -107,11 +107,12 @@ location /report/ {
 }
 ```
 
-嗯好，那么如果我 POST `/report`，应该是：
+嗯好，进行一波脑测，那么如果我 POST `/report`，应该是：
 
 1. send **POST** `/report`
 2. recv **307** `/report/`
 3. send **POST** `/report/`
+4. recv **200**
 
 这样子对吧？天衣无缝，不愧是我。于是立即拉起生产环境，进行一个验证：
 
@@ -125,7 +126,7 @@ rq.post('https://bot.example.com/report').history
 
 经过一上午的快乐网上冲浪，我找到一个将近十年前的 [Issue](https://github.com/alibaba/tengine/issues/407)。
 
-Issue 是国人的，有兴趣可以看一看。主要内容如下：
+Issue 是国人的，有兴趣可以看一看。摘要如下：
 
 > Nginx 会为有 trailing slash 的 `location` 自动设置 `auto_redirect` 标志，影响如下：
 >
