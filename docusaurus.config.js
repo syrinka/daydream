@@ -18,8 +18,8 @@ const macros = {
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: 'My Site',
-  tagline: 'Dinosaurs are cool',
+  title: '< 空想 >',
+  tagline: 'Just Daydream',
   favicon: 'img/favicon.ico',
 
   // Set the production url of your site here
@@ -88,7 +88,7 @@ const config = {
       // Replace with your project's social card
       image: 'img/docusaurus-social-card.jpg',
       navbar: {
-        title: 'My Site',
+        title: 'Daydream',
         logo: {
           alt: 'My Site Logo',
           src: 'img/logo.svg',
