@@ -7,6 +7,15 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 const math = require('remark-math');
 const katex = require('rehype-katex');
 
+const macros = {
+  "\\t": "\\text{#1}",
+  "\\f": "\\frac{#1}{#2}",
+  "\\d": "\\rm d",
+  "\\df": "\\frac{\\d #1}{\\d #2}",
+  "\\p": "\\partial",
+  "\\,": ",\\ "
+}
+
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: 'My Site',
@@ -43,7 +52,7 @@ const config = {
         docs: {
           sidebarPath: require.resolve('./sidebars.js'),
           remarkPlugins: [math],
-          rehypePlugins: [katex],
+          rehypePlugins: [[katex, {macros}]],
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
           editUrl:
