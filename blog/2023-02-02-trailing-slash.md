@@ -30,7 +30,7 @@ title: Trailing Slash
 
 ## 一、proxy_pass 与 Trailing Slash
 
-在 Nginx 的配置文件中，trailing slash 对转发语义有十分微妙的影响。请看下例：
+在 Nginx 的配置中，trailing slash 对转发语义有十分微妙的影响。请看下例：
 
 ```nginx
 # 1.
@@ -55,6 +55,8 @@ location /path/to/that/ {
 >
 > 因为这个原因，如果 `proxy_pass` 带有 trailing slash，那么 `location` 必须也有，比如说二例中写的是 `/path/to/that/` 而不能是 `/path/to/that`，不然就拼接成 `http://localhost:6000//b` 了
 
+有些类似于 `root`（完全转发）与 `alias`（截断转发）的区别。
+
 此为其一。
 
 ## 二、301 与 307
@@ -65,9 +67,7 @@ location /path/to/that/ {
 
 > If the 301 status code is received in response to a request **other than GET or HEAD**, the user agent **MUST NOT** automatically redirect the request unless it can be confirmed by the user, since this might change the conditions under which the request was issued.
 
-简而言之，如果我朝一个地址发送了 POST 请求，服务器返回了 301，那么我应该转而向重定向地址发送一个 **GET** 请求（？）。
-
-试验了一下，curl 和 requests 都是这么实现的，真是令人高兴。
+简而言之，如果我朝一个地址发送了 POST 请求，服务器返回了 301，那么我应该转而重定向地址发送一个 **GET** 请求（？）。试验了一下，curl 和 requests 都是这么实现的。
 
 奇怪的特性，据说是为了向后兼容，谁知道呢。
 
@@ -166,3 +166,5 @@ location /report {
 ```
 
 大家都没有 trailing slash 了，生产环境不报错了，皆大欢喜，皆大欢喜。
+
+按道理来说设置 `auto_redirect false;` 应该也能修，但到这一步已经折腾了整个下午了，实在不想再试了。
