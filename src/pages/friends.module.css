@@ -43,6 +43,7 @@
 
 .card:hover {
     transform: scale(1.06);
+    backdrop-filter: blur(15px);
 }
 
 .friend-ship em {
