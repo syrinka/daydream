@@ -106,6 +106,7 @@ const config = {
           //   label: 'GitHub',
           //   position: 'right',
           // },
+          {to: '/friends', label: 'Friends', position: 'right'}
         ],
       },
       footer: {
