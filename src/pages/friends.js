@@ -8,6 +8,11 @@ import styles from './friends.module.css';
 
 const FriendList = [
     {
+        "avatar": "https://avatars.githubusercontent.com/u/29620619",
+        "link": "https://yaossg.com/site/",
+        "name": "Yaossg"
+    },
+    {
         "avatar": "https://avatars.githubusercontent.com/u/64351788",
         "link": "https://fullstack-sake.github.io/",
         "name": "sake"
