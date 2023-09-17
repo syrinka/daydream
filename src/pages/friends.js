@@ -18,18 +18,13 @@ const FriendList = [
         "name": "sake"
     },
     {
-        "avatar": "https://4ever-xxxl.github.io/img/avatar.jpg",
-        "link": "https://4ever-xxxl.github.io/",
-        "name": "xlykle"
-    },
-    {
         "avatar": "http://q1.qlogo.cn/g?b=qq&nk=2921349622&s=640",
         "link": "https://www.cnblogs.com/timlzh",
         "name": "Timlzh"
     },
     {
-        "avatar": "https://avatars.githubusercontent.com/u/49082837?v=4",
-        "link": "https://zbwer.github.io/",
+        "avatar": "https://blog.zbwer.work/logo.svg",
+        "link": "https://blog.zbwer.work/",
         "name": "zbwer"
     },
     {
@@ -41,16 +36,6 @@ const FriendList = [
         "avatar": "https://fattyray.github.io/fattyrays_homepage/profile.jpg",
         "link": "https://fattyray.github.io/fattyrays_homepage/",
         "name": "fattyrays"
-    },
-    {
-        "avatar": "http://q1.qlogo.cn/g?b=qq&nk=2083953860&s=640",
-        "link": "https://blog.csdn.net/weixin_44111457",
-        "name": "lsr"
-    },
-    {
-        "avatar": "http://www.sh1no.icu/avr.png",
-        "link": "http://www.sh1no.icu/",
-        "name": "Shino"
     },
 ]
 
