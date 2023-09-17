@@ -1,8 +1,8 @@
 ---
-title: Trailing Slash
+title: Trailing Slash 杂谈
 ---
 
-一个 301 引发的血案。
+关于 301 的悬案。
 
 <!--truncate-->
 
@@ -61,7 +61,7 @@ location /path/to/that/ {
 
 ## 二、301 与 307
 
-301 和 307 有什么区别呢，前者是永久重定向，后者是临时重定向。
+301 和 307 有什么区别呢？语义上的不同，前者是永久重定向，后者是临时重定向。
 
 在 [RFC2616](https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html) 对响应码的定义中，301 的描述有这么一段话：
 
@@ -69,7 +69,7 @@ location /path/to/that/ {
 
 简而言之，如果我朝一个地址发送了 POST 请求，服务器返回了 301，那么我应该转而重定向地址发送一个 **GET** 请求（？）。试验了一下，curl 和 requests 都是这么实现的。
 
-奇怪的特性，据说是为了向后兼容，谁知道呢。
+奇怪的特性，据说是为了向前兼容，谁知道呢。
 
 > 在 curl 中，有 `--post301` 可以关闭这个行为，当然了，不是默认开启的。
 
@@ -124,15 +124,13 @@ rq.post('https://bot.example.com/report').history
 
 **¿**
 
-经过一上午的快乐网上冲浪，我找到一个将近十年前的 [Issue](https://github.com/alibaba/tengine/issues/407)。
+经过一上午 Debug 外加一下午的快乐网上冲浪，终于找到一个将近十年前的 [Issue](https://github.com/alibaba/tengine/issues/407)。
 
 Issue 是国人的，有兴趣可以看一看。摘要如下：
 
 > Nginx 会为有 trailing slash 的 `location` 自动设置 `auto_redirect` 标志，影响如下：
 >
 > 假如你访问了 `/index` 路径，在配置文件中没有匹配的块，但是刚好有另一个 `/index/` 的块，就会 **301** 重定向到 `/index/`。
-
-**301** 啊？Nginx，您是否清醒？
 
 这下情况清晰了，
 
@@ -141,7 +139,7 @@ Issue 是国人的，有兴趣可以看一看。摘要如下：
 3. send **GET** `/report/`
 4. recv **405** `Method Not Allowed`
 
-> 笑死，debug 了一整天，原来是特性啊
+悬案告解。
 
 ## 后续
 
@@ -165,6 +163,6 @@ location /report {
 }
 ```
 
-大家都没有 trailing slash 了，生产环境不报错了，皆大欢喜，皆大欢喜。
+把 trailing slash 全部干掉，生产环境不报错了，皆大欢喜，皆大欢喜。
 
-按道理来说设置 `auto_redirect false;` 应该也能修，但到这一步已经折腾了整个下午了，实在不想再试了。
+理论上 `auto_redirect false;` 也可以解决，但到这一步已经浪费我整整一天时间了，实在不想再试了。
