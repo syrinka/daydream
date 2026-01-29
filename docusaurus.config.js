@@ -94,12 +94,12 @@ const config = {
           src: 'img/favicon.ico',
         },
         items: [
-          // {
-          //   type: 'doc',
-          //   docId: 'intro',
-          //   position: 'left',
-          //   label: 'Docs',
-          // },
+          {
+            type: 'doc',
+            docId: 'intro',
+            position: 'left',
+            label: 'Docs',
+          },
           // {to: '/blog', label: 'Blogs', position: 'left'},
           // {
           //   href: 'https://github.com/facebook/docusaurus',
